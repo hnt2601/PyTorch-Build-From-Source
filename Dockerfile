@@ -45,15 +45,13 @@ RUN git clone -b ${VISIONVER} https://github.com/pytorch/vision.git
 RUN cd /vision \
     && git submodule update --init --recursive \
     && pip3 install /pytorch/dist/*.whl \
-    && python3 setup.py build \
-    && python3 setup.py bdist_wheel
+    && python3 setup.py install
 
-RUN git clone -b ${AUDIOVER} https://github.com/pytorch/audio.git
-RUN cd /audio \
-    && git submodule update --init --recursive \
-    && apt-get install -y sox libsox-dev \
-    && python3 setup.py build \
-    && python3 setup.py bdist_wheel
+# RUN git clone -b ${AUDIOVER} https://github.com/pytorch/audio.git
+# RUN cd /audio \
+#     && git submodule update --init --recursive \
+#     && apt-get install -y sox libsox-dev \
+#     && python3 setup.py install
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
