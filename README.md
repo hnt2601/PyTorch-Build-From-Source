@@ -135,7 +135,7 @@ $ docker run --gpus all -it --rm \
     -v `pwd`:/workspace \
     -e LOCAL_UID=$(id -u $USER) \
     -e LOCAL_GID=$(id -g $USER) \
-    pinto0309/pytorch-build:11.3.0-cudnn8-devel-ubuntu20.04 bash
+    pytorch-build:11.3.0-cudnn8-devel-ubuntu20.04 bash
 ```
 
 ## 4. Usage - Docker Pull / Run
@@ -145,5 +145,5 @@ $ docker run --gpus all -it --rm \
     -v `pwd`:/workspace \
     -e LOCAL_UID=$(id -u $USER) \
     -e LOCAL_GID=$(id -g $USER) \
-    pinto0309/pytorch-build:11.3.0-cudnn8-devel-ubuntu20.04 bash
+    pytorch-build:11.3.0-cudnn8-devel-ubuntu20.04 bash
 ```
