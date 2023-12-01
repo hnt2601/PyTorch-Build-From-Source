@@ -75,13 +75,13 @@ Provide Docker build sequences of PyTorch for various environments.
 --     CUDA include path   : /usr/local/cuda/include
 --     NVCC executable     : /usr/local/cuda/bin/nvcc
 --     NVCC flags          : -Xfatbin;-compress-all;-DONNX_NAMESPACE=onnx_torch;-gencode;arch=compute_35,code=sm_35;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_52,code=sm_52;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_61,code=sm_61;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86;-gencode;arch=compute_86,code=compute_86;-Xcudafe;--diag_suppress=cc_clobber_ignored,--diag_suppress=integer_sign_change,--diag_suppress=useless_using_declaration,--diag_suppress=set_but_not_used,--diag_suppress=field_without_dll_interface,--diag_suppress=base_class_has_different_dll_interface,--diag_suppress=dll_interface_conflict_none_assumed,--diag_suppress=dll_interface_conflict_dllexport_assumed,--diag_suppress=implicit_return_from_non_void_function,--diag_suppress=unsigned_compare_with_zero,--diag_suppress=declared_but_not_referenced,--diag_suppress=bad_friend_decl;-std=c++14;-Xcompiler;-fPIC;--expt-relaxed-constexpr;--expt-extended-lambda;-Wno-deprecated-gpu-targets;--expt-extended-lambda;-Xcompiler;-fPIC;-DCUDA_HAS_FP16=1;-D__CUDA_NO_HALF_OPERATORS__;-D__CUDA_NO_HALF_CONVERSIONS__;-D__CUDA_NO_BFLOAT16_CONVERSIONS__;-D__CUDA_NO_HALF2_OPERATORS__
---     CUDA host compiler  : /usr/bin/cc
---     NVCC --device-c     : OFF
---     USE_TENSORRT        : OFF
+--   CUDA host compiler  : /usr/bin/cc
+--   NVCC --device-c     : OFF
+--   USE_TENSORRT        : OFF
 --   USE_ROCM              : OFF
 --   USE_EIGEN_FOR_BLAS    : ON
 --   USE_FBGEMM            : ON
---     USE_FAKELOWP          : OFF
+--   USE_FAKELOWP          : OFF
 --   USE_KINETO            : ON
 --   USE_FFMPEG            : OFF
 --   USE_GFLAGS            : OFF
@@ -96,7 +96,7 @@ Provide Docker build sequences of PyTorch for various environments.
 --   USE_MKLDNN            : ON
 --   USE_MKLDNN_CBLAS      : OFF
 --   USE_NCCL              : OFF
---     USE_SYSTEM_NCCL     : OFF
+--   USE_SYSTEM_NCCL     : OFF
 --   USE_NNPACK            : ON
 --   USE_NUMPY             : ON
 --   USE_OBSERVERS         : ON
@@ -112,9 +112,9 @@ Provide Docker build sequences of PyTorch for various environments.
 --   USE_ROCKSDB           : OFF
 --   USE_ZMQ               : OFF
 --   USE_DISTRIBUTED       : ON
---     USE_MPI             : OFF
---     USE_GLOO            : ON
---     USE_TENSORPIPE      : ON
+--   USE_MPI               : OFF
+--   USE_GLOO             : ON
+--   USE_TENSORPIPE       : ON
 --   USE_DEPLOY           : OFF
 --   Public Dependencies  : Threads::Threads;caffe2::mkldnn
 --   Private Dependencies : pthreadpool;cpuinfo;qnnpack;pytorch_qnnpack;nnpack;XNNPACK;fbgemm;fp16;gloo;tensorpipe;aten_op_header_gen;foxi_loader;rt;fmt::fmt-header-only;kineto;gcc_s;gcc;dl
@@ -126,10 +126,8 @@ Provide Docker build sequences of PyTorch for various environments.
 ## 3. Usage - Docker Build
 You can customize the Dockerfile to build and run your own container images on your own.
 ```bash
-$ version=1.8.1
-$ git clone -b ${version} https://github.com/PINTO0309/PyTorch-build.git
-$ cd PyTorch-build
-$ docker build -t pinto0309/pytorch-build:11.3.0-cudnn8-devel-ubuntu20.04 .
+$ cd PyTorch-Build-From-Source
+$ docker build -t pytorch-build:11.3.0-cudnn8-devel-ubuntu20.04 .
 
 $ docker run --gpus all -it --rm \
     -v `pwd`:/workspace \
