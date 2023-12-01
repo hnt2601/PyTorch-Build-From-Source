@@ -15,17 +15,7 @@ RUN apt-get update && apt-get install -y \
         pciutils cpio gosu git liblapack-dev liblapacke-dev
 
 # Install dependencies (2)
-RUN pip3 install --upgrade pip \
-    && pip3 install --upgrade onnx \
-    && pip3 install --upgrade onnxruntime \
-    && pip3 install --upgrade gdown \
-    && pip3 install cmake==3.18.4 \
-    && pip3 install --upgrade pyyaml \
-    && pip3 install --upgrade ninja \
-    && pip3 install --upgrade yapf \
-    && pip3 install --upgrade six \
-    && pip3 install --upgrade wheel \
-    && pip3 install --upgrade moc \
+RUN pip3 install --upgrade pip onnx onnxruntime gdown cmake==3.18.4 pyyaml ninja yapf six wheel moc \
     && ldconfig
 
 # Build
